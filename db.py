@@ -6,31 +6,40 @@ con = sqlite3.connect('D:\\TEST.db')
 cursor = con.cursor()
 
 #query
-sql1 = 'CREATE TABLE EMP (Id Int,Name Varchar)'
+#sql1 = 'CREATE TABLE EMP (Id Int,Name Varchar)'
 #sql3='DROP TABLE EMP'
 #sql2='PRAGMA table_info(emp);'
 
 #executing query
-# cursor.execute(sql1)
+#cursor.execute(sql2)
 
 # #message output
 # print(cursor.fetchall())
+
+#===inserting data===
 # val=(1,'abc')
 # sql='INSERT INTO EMP VALUES (?,?)'
 # try:
 	# cursor.execute(sql,val)
 	# con.commit()
+	# print("inserted")
 # except Exception as e:
 	# print("error",str(e))
 	# con.rollback()
-sqls="SELECT * FROM EMP;"
+	
+#===selecting data===	
+sqls='''
+SELECT * FROM EMP
+'''
 try:
-	cursor.execute(slqs)
+	cursor.execute(sqls)
+	print("selected")
 except:
-	print('error')
-record=cursor.fetchall()
-for records in record:
-	print(records)
+	print("error")
+	
+record=cursor.fetchone()
+#for records in record:
+print(record)
 
 #closing connection
 con.close()
